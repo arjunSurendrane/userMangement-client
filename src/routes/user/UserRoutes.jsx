@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HrOutlet from "./HrOutlet";
 import Login from "../../pages/user/Login";
-import UserProfile from "../../pages/user/profile";
+import UserProfile from "../../pages/user/Profile";
 import Employees from "../../pages/user/Employees";
 
 export default function UserRoutes() {

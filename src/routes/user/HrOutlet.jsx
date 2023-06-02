@@ -5,7 +5,7 @@ function HrOutlet() {
   if (hrJwt) {
     return <Outlet />;
   }
-  return <Navigate to="/login" />;
+  return <Navigate to="/" />;
 }
 
 export default HrOutlet;
