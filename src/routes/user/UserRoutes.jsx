@@ -10,7 +10,10 @@ export default function UserRoutes() {
   const menuitem =
     role == "Hr"
       ? [{ name: "Home", link: "/employees" }]
+      : role == "admin"
+      ? [{ name: "Home", link: "/admin/d/employees" }]
       : [{ name: "Profile", link: "#" }];
+
   return (
     <>
       <Routes>
@@ -19,6 +22,7 @@ export default function UserRoutes() {
       <div className="mt-7">
         <Header menuItem={menuitem} />
       </div>
+
       <Routes>
         <Route path="/:empid/employee" element={<UserProfile />} />
         <Route path="*" element={<HrOutlet />}>

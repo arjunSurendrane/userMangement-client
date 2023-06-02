@@ -109,7 +109,7 @@ export default function Profile() {
         </div>
         <div className="p-10">
           <Salary salary={salary} />
-          {role == "Hr" ? (
+          {role != "Employee" ? (
             <div className="flex justify-center">
               <div className="m-5">
                 <a
@@ -141,7 +141,7 @@ export default function Profile() {
           )}
         </div>
         <div className="mt-16 p-10">
-          {role == "Hr" ? (
+          {role != "Employee" ? (
             <div>
               <a
                 href="#"

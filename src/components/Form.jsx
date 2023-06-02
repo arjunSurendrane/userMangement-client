@@ -85,18 +85,37 @@ export default function Form({
           <p className="text-red-500 text-sm text-center font-medium">
             {error}
           </p>
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Login as {user == "HR" ? "Employee" : "HR"}?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-              onClick={() =>
-                setUser((user) => (user == "HR" ? "Employee" : "HR"))
-              }
-            >
-              click here
-            </a>
-          </p>
+
+          {title == "Admin Login" ? (
+            ""
+          ) : (
+            <>
+              <p className="mt-10 text-center text-sm text-gray-500">
+                Login as {user == "HR" ? "Employee" : "HR"}?{" "}
+                <a
+                  href="#"
+                  className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                  onClick={() =>
+                    setUser((user) => (user == "HR" ? "Employee" : "HR"))
+                  }
+                >
+                  click here
+                </a>
+              </p>
+              <p className="mt-10 text-center text-sm text-gray-500">
+                Admins{" "}
+                <a
+                  href="/admin"
+                  className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+                  onClick={() =>
+                    setUser((user) => (user == "HR" ? "Employee" : "HR"))
+                  }
+                >
+                  Login Here
+                </a>
+              </p>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -44,7 +44,6 @@ export default function ManageUsers() {
     return (
       <>
         <div className="p-10">
-          <Header menuItem={[{ name: "Employees", link: "/employees" }]} />
           <div className="p-16">
             <div>
               <h1 className="text-lg font-bold">Employees</h1>

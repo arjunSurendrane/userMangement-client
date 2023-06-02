@@ -7,6 +7,7 @@ const urls = {
   incrimentBonus: "/salary/:id/bonus",
   addTask: "/task/:id",
   hrLogin: "/auth/hr/login",
+  adminLogin: "/auth/admin/login",
   listAllEmployees: "/employee",
   createEmployee: "/auth/employee/signup",
   addRating: "/task/:id/rating",
