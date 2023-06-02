@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Rating } from "@material-tailwind/react";
 
 export default function Tasks({ data, addRating }) {
+  const role = localStorage.getItem("role");
   return (
     <>
       {!data.length ? (
@@ -27,10 +28,14 @@ export default function Tasks({ data, addRating }) {
                 <div className="hidden sm:flex sm:flex-col sm:items-end">
                   <p className="text-sm leading-6 text-yellow-500">
                     <>
-                      <Rating
-                        value={task?.rating || 0}
-                        onChange={(e) => addRating(task._id, e)}
-                      />
+                      {role == "Hr" ? (
+                        <Rating
+                          value={task?.rating || 0}
+                          onChange={(e) => addRating(task._id, e)}
+                        />
+                      ) : (
+                        <Rating value={task?.rating || 0} readonly />
+                      )}
                     </>
                   </p>
                 </div>
