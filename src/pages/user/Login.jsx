@@ -10,9 +10,12 @@ export default function Login() {
   const navigate = useNavigate();
   const token =
     localStorage.getItem("userJwt") || localStorage.getItem("hrJwt");
+  const role = localStorage.getItem("role");
   useEffect(() => {
     if (token) {
-      navigate("/employees");
+      role == "Hr"
+        ? navigate("/employees")
+        : navigate(`/${localStorage.getItem("empid")}/employee`);
     }
   }, []);
   const submitData = async (role) => {
@@ -34,15 +37,17 @@ export default function Login() {
         };
       }
       const res = await sendRequest(submit);
+      localStorage.clear();
       if (res.data.data.role == "Employee") {
         localStorage.setItem("userJwt", res.data.token);
+        localStorage.setItem("empid", res.data.data._id);
+        localStorage.setItem("role", res.data.data.role);
+        navigate(`/${res.data.data._id}/employee`);
       } else if (res.data.data.role == "Hr") {
+        localStorage.setItem("role", res.data.data.role);
         localStorage.setItem("hrJwt", res.data.token);
+        navigate("/employees");
       }
-      localStorage.setItem("empid", res.data.data._id);
-      role == "HR"
-        ? navigate("/employees")
-        : navigate(`/${res.data.data._id}/employee`);
     } catch (error) {
       const message = error?.response?.data?.message;
       setError(message ?? "Something gone wrong");

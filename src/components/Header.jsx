@@ -23,7 +23,15 @@ export default function Header({ menuItem }) {
           </ul>
         </div>
         <div>
-          <h1 className="font-bold cursor-pointer">Logout 📤</h1>
+          <h1
+            className="font-bold cursor-pointer"
+            onClick={() => {
+              localStorage.clear();
+              navigate("/login");
+            }}
+          >
+            Logout 📤
+          </h1>
         </div>
       </div>
     </>

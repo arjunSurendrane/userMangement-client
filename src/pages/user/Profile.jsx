@@ -14,6 +14,7 @@ export default function Profile() {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [errors, setError] = useState("");
+  const role = localStorage.getItem("role");
   const { empid: id } = useParams();
   const {
     isLoading,
@@ -80,14 +81,16 @@ export default function Profile() {
       5
     ).toFixed(1);
     if (!overallRating) overallRating = 0.0;
-    return (
-      <div className="p-10 ">
-        <Header
-          menuItem={[
+    const menuitem =
+      role == "Hr"
+        ? [
             { name: "Profile", link: "#" },
             { name: "Employees", link: "/employees" },
-          ]}
-        />
+          ]
+        : [{ name: "Profile", link: "#" }];
+    return (
+      <div className="p-10 ">
+        <Header menuItem={menuitem} />
         <div className="flex justify-between p-10">
           <div className=" w-[60%]">
             <UserData data={employee} />
@@ -98,46 +101,55 @@ export default function Profile() {
         </div>
         <div className="p-10">
           <Salary salary={salary} />
-          <div className="flex justify-center">
-            <div className="m-5">
-              <a
-                href="#"
-                className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
-                onClick={() => {
-                  setTitle("Incriment salary");
-                  setOpen(true);
-                }}
-              >
-                Incriment Salary
-              </a>
+          {role == "Hr" ? (
+            <div className="flex justify-center">
+              <div className="m-5">
+                <a
+                  href="#"
+                  className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
+                  onClick={() => {
+                    setTitle("Incriment salary");
+                    setOpen(true);
+                  }}
+                >
+                  Incriment Salary
+                </a>
+              </div>
+              <div className="m-5">
+                <a
+                  href="#"
+                  className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
+                  onClick={() => {
+                    setTitle("Incriment Bonus");
+                    setOpen(true);
+                  }}
+                >
+                  Incriment Bonus
+                </a>
+              </div>
             </div>
-            <div className="m-5">
-              <a
-                href="#"
-                className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
-                onClick={() => {
-                  setTitle("Incriment Bonus");
-                  setOpen(true);
-                }}
-              >
-                Incriment Bonus
-              </a>
-            </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="mt-16 p-10">
-          <div>
-            <a
-              href="#"
-              onClick={() => {
-                setTitle("Write Task Name");
-                setOpen(true);
-              }}
-              className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
-            >
-              Add Task
-            </a>
-          </div>
+          {role == "Hr" ? (
+            <div>
+              <a
+                href="#"
+                onClick={() => {
+                  setTitle("Write Task Name");
+                  setOpen(true);
+                }}
+                className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
+              >
+                Add Task
+              </a>
+            </div>
+          ) : (
+            ""
+          )}
+
           <Tasks data={tasks} />
         </div>
         <Modal
