@@ -20,14 +20,12 @@ export default function ManageUsers() {
   const submitData = async (data) => {
     setLoading(true);
     try {
-      console.log({ data });
       const res = await sendRequest({
         link: "createEmployee",
         token,
         method: "post",
         data,
       });
-      console.log({ res });
       mutate();
       setOpen(false);
     } catch (error) {

@@ -21,13 +21,11 @@ export default function Employees() {
   } else if (error) {
     console.log("error");
   } else {
-    console.log(user);
     const employees = user?.data?.data?.employees;
-    console.log({ employees });
     return (
       <>
-        <div className="p-10">
-          <div className="p-16">
+        <div className="md:p-10 p-1">
+          <div className="md:p-16 p-2">
             <div>
               <h1 className="text-lg font-bold">Employees</h1>
               <hr />

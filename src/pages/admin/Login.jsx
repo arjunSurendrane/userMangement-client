@@ -14,13 +14,11 @@ export default function AdminLogin() {
   const submitData = async () => {
     setLoading(true);
     try {
-      console.log(email, password);
       const res = await sendRequest({
         link: "adminLogin",
         data: { email, password },
         method: "post",
       });
-      console.log(res);
       await localStorage.setItem("adminJwt", res?.data?.token);
       await localStorage.setItem("role", "admin");
       navigate("/d/admin/d/employees");

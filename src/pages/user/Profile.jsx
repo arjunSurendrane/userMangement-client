@@ -30,7 +30,6 @@ export default function Profile() {
 
   const addRating = async (id, rating) => {
     try {
-      console.log(id, rating);
       const res = await sendRequest({
         link: "addRating",
         method: "patch",
@@ -46,7 +45,6 @@ export default function Profile() {
 
   const submitData = async (data) => {
     setLoading(true);
-    console.log(data);
     try {
       if (title == "Incriment salary") {
         const res = await sendRequest({
@@ -69,7 +67,6 @@ export default function Profile() {
         setOpen(false);
         mutate();
       } else {
-        console.log(data);
         const res = await sendRequest({
           link: "addTask",
           method: "post",
@@ -95,15 +92,14 @@ export default function Profile() {
     console.log("success");
     const userData = response?.data?.data;
     const { employee, salary, tasks } = userData;
-    console.log({ task: tasks[0] });
     let overallRating = (
       (tasks[0]?.sumOfRating / (tasks[0]?.count * 5)) *
       5
     ).toFixed(1);
     if (!overallRating) overallRating = 0.0;
     return (
-      <div className="p-10 ">
-        <div className="flex justify-between p-10">
+      <div className="md:p-10 p-3">
+        <div className="md:flex justify-between md:p-10 p-3">
           <div className=" w-[60%]">
             <UserData data={employee} />
           </div>
@@ -111,38 +107,42 @@ export default function Profile() {
             <OverallRating rating={overallRating} />
           </div>
         </div>
-        <div className="p-10">
-          <Salary salary={salary} />
-          {role != "Employee" ? (
-            <div className="flex justify-center">
-              <div className="m-5">
-                <a
-                  href="#"
-                  className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
-                  onClick={() => {
-                    setTitle("Incriment salary");
-                    setOpen(true);
-                  }}
-                >
-                  Incriment Salary
-                </a>
+        <div className="md:p-10 p-3">
+          <div>
+            <Salary salary={salary} />
+          </div>
+          <div>
+            {role != "Employee" ? (
+              <div className="md:flex justify-center">
+                <div className="md:m-5 m-1">
+                  <a
+                    href="#"
+                    className="md:inline-block flex  rounded-md border border-transparent bg-[#203b61] md:px-8 px-2 md:py-3 py-1 text-center font-medium text-white hover:bg-[#192e4b]"
+                    onClick={() => {
+                      setTitle("Incriment salary");
+                      setOpen(true);
+                    }}
+                  >
+                    Incriment Salary
+                  </a>
+                </div>
+                <div className="md:m-5 m-1">
+                  <a
+                    href="#"
+                    className="md:inline-block flex rounded-md border border-transparent bg-[#203b61] md:px-8 px-2 md:py-3 py-1 text-center font-medium text-white hover:bg-[#192e4b]"
+                    onClick={() => {
+                      setTitle("Incriment Bonus");
+                      setOpen(true);
+                    }}
+                  >
+                    Incriment Bonus
+                  </a>
+                </div>
               </div>
-              <div className="m-5">
-                <a
-                  href="#"
-                  className="inline-block rounded-md border border-transparent bg-[#203b61] px-8 py-3 text-center font-medium text-white hover:bg-[#192e4b]"
-                  onClick={() => {
-                    setTitle("Incriment Bonus");
-                    setOpen(true);
-                  }}
-                >
-                  Incriment Bonus
-                </a>
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
+            ) : (
+              ""
+            )}
+          </div>
         </div>
         <div className="mt-16 p-10">
           {role != "Employee" ? (

@@ -19,19 +19,18 @@ export default function Login() {
         : navigate(`/${localStorage.getItem("empid")}/employee`);
     }
   }, []);
+
   const submitData = async (role) => {
     setLoading(true);
     try {
       let submit;
       if (role == "HR") {
-        console.log("here");
         submit = {
           link: "hrLogin",
           data: { email, password },
           method: "post",
         };
       } else {
-        console.log("here");
         submit = {
           link: "employeeLogin",
           data: { email, password },
@@ -46,8 +45,8 @@ export default function Login() {
         await localStorage.setItem("role", res.data.data.role);
         navigate(`/${res.data.data._id}/employee`);
       } else if (res.data.data.role == "Hr") {
-        await localStorage.setItem("role", res.data.data.role);
-        await localStorage.setItem("hrJwt", res.data.token);
+        localStorage.setItem("role", res.data.data.role);
+        localStorage.setItem("hrJwt", res.data.token);
         navigate("/employees");
       }
     } catch (error) {

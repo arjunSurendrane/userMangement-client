@@ -10,15 +10,15 @@ export default function Header({ menuItem }) {
       {" "}
       {role && (
         <>
-          <div className="w-full h-16  pb-11 px-11 flex justify-between shadow-md">
-            <div className=" w-20 h-full cursor-pointer">
-              <img src={logo} alt="logo" className="h-10" />
+          <div className="w-full md:h-16 h-7   pb-11 px-11 flex justify-between shadow-md">
+            <div className=" md:w-20 w-4   md:h-full cursor-pointer">
+              <img src={logo} alt="logo" className="md:h-10 h-6" />
             </div>
             <div>
               <ul className="flex justify-between">
                 {menuItem?.map((item) => (
                   <li
-                    className="font-bold text-lg cursor-pointer m-4"
+                    className="font-bold md:text-lg cursor-pointer md:m-4"
                     onClick={() => navigate(item?.link)}
                     key={item.name}
                   >
@@ -29,7 +29,7 @@ export default function Header({ menuItem }) {
             </div>
             <div>
               <h1
-                className="font-bold cursor-pointer"
+                className="font-bold cursor-pointer text-sm md:text-base"
                 onClick={() => {
                   localStorage.clear();
                   navigate("/");

@@ -25,9 +25,8 @@ export default function UserRoutes() {
 
       <Routes>
         <Route path="/:empid/employee" element={<UserProfile />} />
-        <Route path="*" element={<HrOutlet />}>
-          <Route path="employees" element={<Employees />} />
-          <Route path="profile" />
+        <Route path="/employees" element={<HrOutlet />}>
+          <Route path="" element={<Employees />} />
         </Route>
       </Routes>
     </>

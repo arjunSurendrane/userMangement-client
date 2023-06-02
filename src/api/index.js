@@ -21,7 +21,6 @@ export const sendRequest = async ({
   method,
 }) => {
   let url = urls[link];
-  console.log(urls[link], url);
   if (id) url = url.replace(":id", id);
   if (method == "get") {
     const res = await axios.get(url, {

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Users({ data }) {
   const navigate = useNavigate();
-  console.log({ data });
   return (
     <div>
       <ul role="list" className="divide-y divide-gray-100">

@@ -19,11 +19,6 @@ export default function AdminRoutes() {
       <Routes>
         <Route path="/d/*" element={<AdminOutlet />}>
           <Route path="employees" element={<ManageUsers />} />
-          <Route path="add/employee" />
-          <Route path="add/hr" />
-          <Route path="hr" />
-          <Route path=":empid/employee" />
-          <Route path=":hrid/hr" />
         </Route>
       </Routes>
     </>
