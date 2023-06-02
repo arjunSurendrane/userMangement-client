@@ -18,8 +18,8 @@ export default function Salary({ salary }) {
     {
       id: 3,
       value: parseInt(salary?.currentSalary) - parseInt(salary?.incriment),
-      value2: parseInt(salary?.incriment),
-      name: `Last Incriment(${salary?.month})`,
+      value2: parseInt(salary?.incriment) || 0,
+      name: `Last Incriment(${salary?.month || "-"})`,
     },
   ];
   return (
@@ -43,10 +43,12 @@ export default function Salary({ salary }) {
                         {stat.name}
                       </dt>
                       <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                        <p>{stat.value}</p>
+                        <p>{stat.value || 0}</p>
 
-                        {stat.value2 && (
+                        {stat.value2 && stat.value ? (
                           <p className="text-green-600">+{stat.value2}</p>
+                        ) : (
+                          ""
                         )}
                       </dd>
                     </div>
