@@ -7,6 +7,7 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const token =
     localStorage.getItem("userJwt") || localStorage.getItem("hrJwt");
@@ -19,6 +20,7 @@ export default function Login() {
     }
   }, []);
   const submitData = async (role) => {
+    setLoading(true);
     try {
       let submit;
       if (role == "HR") {
@@ -53,6 +55,7 @@ export default function Login() {
       setError(message ?? "Something gone wrong");
       setTimeout(() => setError(""), 2000);
     }
+    setLoading(false);
   };
   return (
     <div>
@@ -62,6 +65,7 @@ export default function Login() {
           firstField={"Email address"}
           secondField={"Password"}
           button={"Sign in"}
+          loading={loading}
           setFirstField={(data) => setEmail(data)}
           setSecondField={(data) => setPassword(data)}
           error={error}

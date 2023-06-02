@@ -15,6 +15,7 @@ export default function Profile() {
   const [title, setTitle] = useState("");
   const [errors, setError] = useState("");
   const role = localStorage.getItem("role");
+  const [loading, setLoading] = useState(false);
   const { empid: id } = useParams();
   const {
     isLoading,
@@ -43,6 +44,7 @@ export default function Profile() {
   };
 
   const submitData = async (data) => {
+    setLoading(true);
     console.log(data);
     try {
       if (title == "Incriment salary") {
@@ -81,6 +83,7 @@ export default function Profile() {
       console.log("error" + error);
       setError("Something gone wrong");
     }
+    setLoading(false);
   };
 
   if (isLoading) {
@@ -165,6 +168,7 @@ export default function Profile() {
         </div>
         <Modal
           open={open}
+          loading={loading}
           setOpen={(data) => setOpen(data)}
           title={title}
           submitData={(data) => submitData(data)}

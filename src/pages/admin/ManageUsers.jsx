@@ -9,6 +9,7 @@ export default function ManageUsers() {
   const token = localStorage.getItem("hrJwt");
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
   const {
     isLoading,
     error,
@@ -17,6 +18,7 @@ export default function ManageUsers() {
   } = useSWR({ method: "get", token, link: "listAllEmployees" }, sendRequest);
 
   const submitData = async (data) => {
+    setLoading(true);
     try {
       console.log({ data });
       const res = await sendRequest({
@@ -31,6 +33,7 @@ export default function ManageUsers() {
     } catch (error) {
       console.log(error);
     }
+    setLoading(false);
   };
 
   if (isLoading) {
@@ -69,6 +72,7 @@ export default function ManageUsers() {
         <AddUser
           open={open}
           title={title}
+          loading={loading}
           setOpen={() => setOpen(false)}
           fields={[
             { placeholder: "name", type: "text" },

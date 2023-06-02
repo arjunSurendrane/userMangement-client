@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function Modal({ open, setOpen, title, submitData }) {
+export default function Modal({ open, setOpen, title, submitData, loading }) {
   const cancelButtonRef = useRef(null);
   const [data, setData] = useState("");
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function Modal({ open, setOpen, title, submitData }) {
                       //   setOpen(false);
                     }}
                   >
-                    Submit
+                    {loading ? "Loading..." : "Submit"}
                   </button>
                   <button
                     type="button"

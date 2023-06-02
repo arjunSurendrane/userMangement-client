@@ -7,10 +7,12 @@ export default function AdminLogin() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const token =
     localStorage.getItem("userJwt") || localStorage.getItem("hrJwt");
   const submitData = async () => {
+    setLoading(true);
     try {
       console.log(email, password);
       const res = await sendRequest({
@@ -21,13 +23,14 @@ export default function AdminLogin() {
       console.log(res);
       await localStorage.setItem("adminJwt", res?.data?.token);
       await localStorage.setItem("role", "admin");
-      navigate("/admin/d/employees");
+      navigate("/d/admin/d/employees");
     } catch (error) {
       console.log(error);
       const message = error?.response?.data?.message;
       setError(message ?? "Something gone wrong");
       setTimeout(() => setError(""), 2000);
     }
+    setLoading(false);
   };
   return (
     <div>
@@ -40,6 +43,7 @@ export default function AdminLogin() {
         setSecondField={(data) => setPassword(data)}
         error={error}
         submitData={(role) => submitData(role)}
+        loading={loading}
       />
     </div>
   );

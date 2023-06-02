@@ -12,7 +12,7 @@ export default function AdminRoutes() {
       </Routes>
       <div className="mt-5">
         <Header
-          menuItem={[{ name: "Employees", link: "/admin/d/employees" }]}
+          menuItem={[{ name: "Employees", link: "/d/admin/d/employees" }]}
         />
       </div>
 

@@ -11,7 +11,7 @@ export default function UserRoutes() {
     role == "Hr"
       ? [{ name: "Home", link: "/employees" }]
       : role == "admin"
-      ? [{ name: "Home", link: "/admin/d/employees" }]
+      ? [{ name: "Home", link: "/d/admin/d/employees" }]
       : [{ name: "Profile", link: "#" }];
 
   return (

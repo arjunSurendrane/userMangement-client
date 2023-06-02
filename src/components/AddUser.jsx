@@ -1,7 +1,14 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-export default function AddUser({ open, setOpen, title, submitData, fields }) {
+export default function AddUser({
+  open,
+  setOpen,
+  title,
+  submitData,
+  fields,
+  loading,
+}) {
   const cancelButtonRef = useRef(null);
   const [error, setError] = useState("");
   const dataCollection = {};
@@ -88,7 +95,7 @@ export default function AddUser({ open, setOpen, title, submitData, fields }) {
                       type="submit"
                       className="inline-flex w-full justify-center rounded-md bg-[#1D3557] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#24426d] sm:ml-3 sm:w-auto"
                     >
-                      Submit
+                      {loading ? "Loading..." : "Submit"}
                     </button>
                     <button
                       type="button"
