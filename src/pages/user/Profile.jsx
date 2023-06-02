@@ -36,7 +36,7 @@ export default function Profile() {
         token,
         data: { rating },
       });
-      console.log(res);
+      mutate();
     } catch (error) {
       console.log(error);
     }
