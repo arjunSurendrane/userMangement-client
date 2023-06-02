@@ -8,7 +8,7 @@ export default function UserRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
       </Routes>
       <Routes>
         <Route path="/:empid/employee" element={<UserProfile />} />
