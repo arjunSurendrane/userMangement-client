@@ -39,13 +39,13 @@ export default function Login() {
       const res = await sendRequest(submit);
       localStorage.clear();
       if (res.data.data.role == "Employee") {
-        localStorage.setItem("userJwt", res.data.token);
-        localStorage.setItem("empid", res.data.data._id);
-        localStorage.setItem("role", res.data.data.role);
+        await localStorage.setItem("userJwt", res.data.token);
+        await localStorage.setItem("empid", res.data.data._id);
+        await localStorage.setItem("role", res.data.data.role);
         navigate(`/${res.data.data._id}/employee`);
       } else if (res.data.data.role == "Hr") {
-        localStorage.setItem("role", res.data.data.role);
-        localStorage.setItem("hrJwt", res.data.token);
+        await localStorage.setItem("role", res.data.data.role);
+        await localStorage.setItem("hrJwt", res.data.token);
         navigate("/employees");
       }
     } catch (error) {
