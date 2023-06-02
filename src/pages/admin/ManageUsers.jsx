@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 import AddUser from "../../components/AddUser";
 
 export default function ManageUsers() {
-  const token = localStorage.getItem("hrJwt");
+  const token = localStorage.getItem("adminJwt");
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);

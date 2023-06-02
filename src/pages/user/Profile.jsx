@@ -10,7 +10,8 @@ import { sendRequest } from "../../api";
 import Modal from "../../components/Modal";
 
 export default function Profile() {
-  const token = localStorage.getItem("userJwt");
+  const token =
+    localStorage.getItem("hrJwt") || localStorage.getItem("adminJwt");
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [errors, setError] = useState("");

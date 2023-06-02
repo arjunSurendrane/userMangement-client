@@ -6,7 +6,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/d/admin/*" element={<AdminRoutes />} />
+          <Route path="d/admin/*" element={<AdminRoutes />} />
           <Route path="/*" element={<UserRoutes />} />
         </Routes>
       </BrowserRouter>
