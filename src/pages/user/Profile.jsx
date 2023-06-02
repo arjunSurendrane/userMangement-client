@@ -26,6 +26,22 @@ export default function Profile() {
     sendRequest
   );
 
+  const addRating = async (id, rating) => {
+    try {
+      console.log(id, rating);
+      const res = await sendRequest({
+        link: "addRating",
+        method: "patch",
+        id,
+        token,
+        data: { rating },
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const submitData = async (data) => {
     console.log(data);
     try {
@@ -150,7 +166,10 @@ export default function Profile() {
             ""
           )}
 
-          <Tasks data={tasks} />
+          <Tasks
+            data={tasks}
+            addRating={(id, rating) => addRating(id, rating)}
+          />
         </div>
         <Modal
           open={open}

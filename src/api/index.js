@@ -8,6 +8,8 @@ const urls = {
   addTask: "/task/:id",
   hrLogin: "/auth/hr/login",
   listAllEmployees: "/employee",
+  createEmployee: "/auth/employee/signup",
+  addRating: "/task/:id/rating",
 };
 
 export const sendRequest = async ({

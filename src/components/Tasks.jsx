@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Rating } from "@material-tailwind/react";
 
-export default function Tasks({ data }) {
+export default function Tasks({ data, addRating }) {
   return (
     <>
       {!data.length ? (
@@ -11,7 +12,10 @@ export default function Tasks({ data }) {
         <>
           <ul role="list" className="divide-y divide-gray-100 mt-5">
             {data[0]?.data?.map((task) => (
-              <li key={task?._id} className="flex justify-between gap-x-6 py-5">
+              <li
+                key={task?._id}
+                className="flex justify-between gap-x-6 py-5 cursor-pointer"
+              >
                 <div className="flex gap-x-4">
                   <div className="min-w-0 flex-auto">
                     {" "}
@@ -21,8 +25,13 @@ export default function Tasks({ data }) {
                   </div>
                 </div>
                 <div className="hidden sm:flex sm:flex-col sm:items-end">
-                  <p className="text-sm leading-6 text-gray-900">
-                    {task?.rating || 0} ⭐
+                  <p className="text-sm leading-6 text-yellow-500">
+                    <>
+                      <Rating
+                        value={task?.rating || 0}
+                        onChange={(e) => addRating(task._id, e)}
+                      />
+                    </>
                   </p>
                 </div>
               </li>
