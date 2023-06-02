@@ -97,16 +97,8 @@ export default function Profile() {
       5
     ).toFixed(1);
     if (!overallRating) overallRating = 0.0;
-    const menuitem =
-      role == "Hr"
-        ? [
-            { name: "Profile", link: "#" },
-            { name: "Employees", link: "/employees" },
-          ]
-        : [{ name: "Profile", link: "#" }];
     return (
       <div className="p-10 ">
-        <Header menuItem={menuitem} />
         <div className="flex justify-between p-10">
           <div className=" w-[60%]">
             <UserData data={employee} />
