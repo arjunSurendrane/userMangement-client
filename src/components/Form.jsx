@@ -105,7 +105,7 @@ export default function Form({
               <p className="mt-10 text-center text-sm text-gray-500">
                 Admins{" "}
                 <a
-                  href="/admin"
+                  href="/d/admin"
                   className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
                   onClick={() =>
                     setUser((user) => (user == "HR" ? "Employee" : "HR"))
