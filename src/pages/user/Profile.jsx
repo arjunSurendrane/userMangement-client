@@ -39,7 +39,7 @@ export default function Profile() {
       });
       mutate();
     } catch (error) {
-      console.log(error);
+      alert("Something gone wrong!!! Try again...");
     }
   };
 
@@ -87,7 +87,9 @@ export default function Profile() {
   if (isLoading) {
     console.log("loading...");
   } else if (error) {
-    console.log("error");
+    alert("Something gone wrong!!!");
+    localStorage.clear();
+    navigate("/");
   } else {
     console.log("success");
     const userData = response?.data?.data;
