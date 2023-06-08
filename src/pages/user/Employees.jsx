@@ -19,7 +19,9 @@ export default function Employees() {
   if (isLoading) {
     console.log("loading...");
   } else if (error) {
-    console.log("error");
+     alert("Something gone wrong!!!");
+    localStorage.clear();
+    navigate("/");
   } else {
     const employees = user?.data?.data?.employees;
     return (
